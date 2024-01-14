@@ -1,12 +1,37 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, SafeAreaView, StyleSheet,
+  View,
+  Image,
+  TextInput,
+  Pressable,
+ } from 'react-native';
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
+ 
+import React from 'react';
+
+// You can import supported modules from npm
+import { Card } from 'react-native-paper';
+
+// or any files within the Snack
+import Porto from './src/screens/home/index';
+import Login from './src/screens/login/index';
+import Register from './src/screens/register/index';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+  
+  return(
+    <NavigationContainer>
+      <Stack.Navigator
+      screenOptions={{headerShown: false}}
+      >
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Portfolio" component={Porto} />
+        <Stack.Screen name="Register" component={Register} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
